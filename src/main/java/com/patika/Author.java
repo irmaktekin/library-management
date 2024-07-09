@@ -9,7 +9,7 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "author_id")
-    private Long id;
+    private int id;
 
     @Column(name = "author_name",length = 100, nullable = false)
     private String name;
@@ -37,11 +37,11 @@ public class Author {
         this.birthDate = birthDate;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
