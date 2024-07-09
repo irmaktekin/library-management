@@ -8,8 +8,8 @@ import java.sql.Date;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "book_id", columnDefinition = "serial")
-    private int id;
+    @Column(name = "book_id")
+    private Long id;
 
     @Column(name = "book_name",length = 100, nullable = false, unique = true)
     private String name;
@@ -28,11 +28,11 @@ public class Book {
         this.book_stock = book_stock;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
