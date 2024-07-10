@@ -22,6 +22,10 @@ public class BookBorrowing {
     @Column(name = "return_date")
     private java.util.Date returnDate;
 
+    @ManyToOne
+    @JoinColumn(name="borrowing_book_id", referencedColumnName ="book_id")
+    private Book book;
+
     public Date getBorrowingDate() {
         return borrowingDate;
     }

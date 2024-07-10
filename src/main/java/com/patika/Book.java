@@ -2,6 +2,7 @@ package com.patika;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name="book")
@@ -15,6 +16,14 @@ public class Book {
     @ManyToOne
     @JoinColumn(name="book_author_id", referencedColumnName ="author_id")
     private Author author;
+
+    @ManyToOne
+    @JoinColumn(name="book_publisher_id", referencedColumnName ="publisher_id")
+    private Publisher publisher;
+
+    @OneToMany(mappedBy = "book")
+    private List<BookBorrowing> bookBorrowings;
+
 
     @Column(name = "book_name",length = 100, nullable = false, unique = true)
     private String name;
