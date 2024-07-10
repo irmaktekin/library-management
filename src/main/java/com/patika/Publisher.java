@@ -2,6 +2,7 @@ package com.patika;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "publisher")
@@ -11,6 +12,9 @@ public class Publisher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "publisher_id")
     private int id;
+
+    @OneToMany(mappedBy = "publisher")
+    private List<Book> books;
 
     @Column(name = "publisher_name",length = 100, nullable = false)
     private String publisherName;
