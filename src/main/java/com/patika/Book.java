@@ -6,10 +6,15 @@ import java.sql.Date;
 @Entity
 @Table(name="book")
 public class Book {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id")
     private int id;
+
+    @ManyToOne
+    @JoinColumn(name="book_author_id", referencedColumnName ="author_id")
+    private Author author;
 
     @Column(name = "book_name",length = 100, nullable = false, unique = true)
     private String name;
@@ -53,6 +58,22 @@ public class Book {
     }
 
     public Book() {
+    }
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", publicationYear=" + publicationYear +
+                ", book_stock=" + book_stock +
+                '}';
     }
 
 }
