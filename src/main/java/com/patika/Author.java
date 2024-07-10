@@ -14,7 +14,7 @@ public class Author {
     @Column(name = "author_id")
     private int id;
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "author",cascade = CascadeType.PERSIST,fetch =FetchType.EAGER)
     private List<Book> books;
 
     @Column(name = "author_name",length = 100, nullable = false)

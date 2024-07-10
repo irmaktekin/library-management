@@ -13,7 +13,7 @@ public class Publisher {
     @Column(name = "publisher_id")
     private int id;
 
-    @OneToMany(mappedBy = "publisher")
+    @OneToMany(mappedBy = "publisher",cascade = CascadeType.PERSIST, fetch =FetchType.EAGER)
     private List<Book> books;
 
     @Column(name = "publisher_name",length = 100, nullable = false)

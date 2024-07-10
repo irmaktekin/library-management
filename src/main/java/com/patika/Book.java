@@ -17,7 +17,7 @@ public class Book {
     @JoinColumn(name="book_author_id", referencedColumnName ="author_id")
     private Author author;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinTable(name="book_categories",
                 joinColumns = {
                         @JoinColumn(name = "book_category_book_id")},
@@ -29,7 +29,7 @@ public class Book {
     @JoinColumn(name="book_publisher_id", referencedColumnName ="publisher_id")
     private Publisher publisher;
 
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "book", cascade = CascadeType.PERSIST,fetch =FetchType.LAZY)
     private List<BookBorrowing> bookBorrowings;
 
 
