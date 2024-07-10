@@ -17,6 +17,14 @@ public class Book {
     @JoinColumn(name="book_author_id", referencedColumnName ="author_id")
     private Author author;
 
+    @ManyToMany
+    @JoinTable(name="book_categories",
+                joinColumns = {
+                        @JoinColumn(name = "book_category_book_id")},
+                        inverseJoinColumns = {@JoinColumn(name = "book_category_category_id")}
+                )
+    private List <Category> categoryList;
+
     @ManyToOne
     @JoinColumn(name="book_publisher_id", referencedColumnName ="publisher_id")
     private Publisher publisher;

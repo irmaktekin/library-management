@@ -1,6 +1,7 @@
 package com.patika;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="category")
@@ -9,6 +10,9 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
     private int id;
+
+    @ManyToMany(mappedBy = "categoryList")
+    private List<Book> books;
 
     @Column(name = "category_name",length = 100, nullable = false)
     private String categoryName;
